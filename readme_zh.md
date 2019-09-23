@@ -525,11 +525,9 @@ _注意:_ YouTube和Vimeo的`src`属性可以是video ID或者URL
 
 1.  仅HTML5
 
-# Events
+# 事件
 
-You can listen for events on the target element you setup Plyr on (see example under the table). Some events only apply to HTML5 audio and video. Using your
-reference to the instance, you can use the `on()` API method or `addEventListener()`. Access to the API can be obtained this way through the `event.detail.plyr`
-property. Here's an example:
+您可以监听并设置Plyr的目标元素上的事件（参见表下的示例）。有些事件只适用于HTML5音频和视频。 当使用对实例的引用时，你可以可以使用`on()`API方法或`addEventListener()`。 你可以通过这个`event.detail.plyr`可以获得对api的访问.。下面有个例子:
 
 ```javascript
 player.on('ready', event => {
@@ -544,68 +542,66 @@ player.on('ready', event => {
 | `progress`         | Sent periodically to inform interested parties of progress downloading the media. Information about the current amount of the media that has been downloaded is available in the media element's `buffered` attribute. |
 | `playing`          | Sent when the media begins to play (either for the first time, after having been paused, or after ending and then restarting).                                                                                         |
 | `play`             | Sent when playback of the media starts after having been paused; that is, when playback is resumed after a prior `pause` event.                                                                                        |
-| `pause`            | Sent when playback is paused.                                                                                                                                                                                          |
+| `pause`            | 当播放暂停的时候触发                                                                                                                                                                                      |
 | `timeupdate`       | The time indicated by the element's `currentTime` attribute has changed.                                                                                                                                               |
-| `volumechange`     | Sent when the audio volume changes (both when the volume is set and when the `muted` state is changed).                                                                                                                |
+| `volumechange`     | 当音频音量发生改变的时候触发 (设置音量大小和改变静音`muted`状态也会触发)。                                                                                                              |
 | `seeking`          | Sent when a seek operation begins.                                                                                                                                                                                     |
 | `seeked`           | Sent when a seek operation completes.                                                                                                                                                                                  |
-| `ratechange`       | Sent when the playback speed changes.                                                                                                                                                                                  |
-| `ended`            | Sent when playback completes. _Note:_ This does not fire if `autoplay` is true.                                                                                                                                        |
-| `enterfullscreen`  | Sent when the player enters fullscreen mode (either the proper fullscreen or full-window fallback for older browsers).                                                                                                 |
-| `exitfullscreen`   | Sent when the player exits fullscreen mode.                                                                                                                                                                            |
-| `captionsenabled`  | Sent when captions are enabled.                                                                                                                                                                                        |
-| `captionsdisabled` | Sent when captions are disabled.                                                                                                                                                                                       |
-| `languagechange`   | Sent when the caption language is changed.                                                                                                                                                                             |
-| `controlshidden`   | Sent when the controls are hidden.                                                                                                                                                                                     |
-| `controlsshown`    | Sent when the controls are shown.                                                                                                                                                                                      |
-| `ready`            | Triggered when the instance is ready for API calls.                                                                                                                                                                    |
+| `ratechange`       | 当播放速度改变的时候触发                                                                                                                                                                                 |
+| `ended`            | 当播放完成的时候触发 . _N注意:_ 如果`autoplay`true，那么这个事件就不会触发                                                                                                                                  |
+| `enterfullscreen`  | 当播放器进入全屏状态的时候触发(对于较旧的浏览器，可以选择适当的全屏或全窗口回退).                                                                                                 |
+| `exitfullscreen`   | 当播放器退出全屏状态的时候触发                                                                                                                                                                            |
+| `captionsenabled`  | 当字幕生效的时候触发                                                                                                                                                                                      |
+| `captionsdisabled` | 当字幕失效的时候触发                                                                                                                                                                                      |
+| `languagechange`   | 当字幕语言发生改变的时候触发                                                                                                                                                                             |
+| `controlshidden`   | 当控制条隐藏的时候触发                                                                                                                                                                                    |
+| `controlsshown`    | 当控制条显示的时候触发                                                                                                                                                                                     |
+| `ready`            |当实例准备好进行api调用时触发。                                                                                                                                                                    |
 
 ### 仅HTML5
 
-| Event Type       | Description                                                                                                                                                                                                                                                                                                                                    |
+| 事件种类       | 说明                                                                                                                                                                                                                                                                                                                                    |
 | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `loadstart`      | Sent when loading of the media begins.                                                                                                                                                                                                                                                                                                         |
-| `loadeddata`     | The first frame of the media has finished loading.                                                                                                                                                                                                                                                                                             |
-| `loadedmetadata` | The media's metadata has finished loading; all attributes now contain as much useful information as they're going to.                                                                                                                                                                                                                          |
-| `qualitychange`  | The quality of playback has changed.                                                                                                                                                                                                                                                                                                           |
-| `canplay`        | Sent when enough data is available that the media can be played, at least for a couple of frames. This corresponds to the `HAVE_ENOUGH_DATA` `readyState`.                                                                                                                                                                                     |
+| `loadstart`      | 当媒体开始加载的时候触发                                                                                                                                                                                                                                                                                                         |
+| `loadeddata`     | 当媒体的第1帧已经加载完成的时候触发                                                                                                                                                                                                                                                                                            |
+| `loadedmetadata` | 当媒体的元数据加载完成的时候触发 ；所有属性现在包含的有用信息与它们将要包含的一样多。                                                                                                                                                                                                             |
+| `qualitychange`  | 当视频质量发生改变的时候触发                                                                                                                                                                                                                            |
+| `canplay`        | 当有足够的数据可以播放媒体时（至少可以播放几帧）触发。这相当于 `HAVE_ENOUGH_DATA` `readyState`                                                                                                                                                                                    |
 | `canplaythrough` | Sent when the ready state changes to `CAN_PLAY_THROUGH`, indicating that the entire media can be played without interruption, assuming the download rate remains at least at the current level. _Note:_ Manually setting the `currentTime` will eventually fire a `canplaythrough` event in firefox. Other browsers might not fire this event. |
-| `stalled`        | Sent when the user agent is trying to fetch media data, but data is unexpectedly not forthcoming.                                                                                                                                                                                                                                              |
-| `waiting`        | Sent when the requested operation (such as playback) is delayed pending the completion of another operation (such as a seek).                                                                                                                                                                                                                  |
+
+| `stalled`        | 当用户代理（UA）尝试获取媒体数据,数据却据意外地无法提供的时候触发。                                                                                                                                                                                         |
+| `waiting`        | 当请求的操作（如回放）延迟等待另一个操作（如条状）完成时发送                                                                                                                                                                                                                 |
 | `emptied`        | he media has become empty; for example, this event is sent if the media has already been loaded (or partially loaded), and the `load()` method is called to reload it.                                                                                                                                                                         |
-| `cuechange`      | Sent when a `TextTrack` has changed the currently displaying cues.                                                                                                                                                                                                                                                                             |
-| `error`          | Sent when an error occurs. The element's `error` attribute contains more information.                                                                                                                                                                                                                                                          |
+| `cuechange`      | 当`TextTrack`更改了当前显示的提示时触发。                                                                                                                                                                                                                                                                      |
+| `error`          | 当有错误发生的时候触发. 元素的`error`属性包含更多信息。                                                                                                                                                                                                                                                   |
 
 ### 仅YouTube
 
 | 事件种类    | 说明                                                                                                                                                                                                                                                                                                                |
 | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `statechange` | The state of the player has changed. The code can be accessed via `event.detail.code`. Possible values are `-1`: Unstarted, `0`: Ended, `1`: Playing, `2`: Paused, `3`: Buffering, `5`: Video cued. See the [YouTube Docs](https://developers.google.com/youtube/iframe_api_reference#onStateChange) for more information. |
+| `statechange` | 播放器状态发生改变，可以通过`event.detail.code`访问该参数，可能的值是 `-1`: 未开始, `0`: 结束了, `1`: 播放中, `2`: 暂停, `3`: 缓冲中。你可以查看 [YouTube文档](https://developers.google.com/youtube/iframe_api_reference#onStateChange)获取更多信息。 |
 
-_Note:_ These events also bubble up the DOM. The event target will be the container element.
+_注意:_ 这些在DOM里面是冒泡事件。而事件对象则是容器元素。
 
-Some event details borrowed from [MDN](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Media_events).
+一些事件的细节是引入自[MDN](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Media_events)的。
+
 
 # 嵌入式
 
-YouTube and Vimeo are currently supported and function much like a HTML5 video. Similar events and API methods are available for all types. However if you wish
-to access the API's directly. You can do so via the `embed` property of your player object - e.g. `player.embed`. You can then use the relevant methods from the
-third party APIs. More info on the respective API's here:
-
-您可以通过Plyr播放器对象的`embed`属性执行此操作，例如`player.embed`，然后可以使用第三方API了。有关各自API的更多信息，请参见：
+目前支持YouTube和Vimeo，其功能非常类似于HTML5视频，类似的事件和api方法可用于所有类型。但是如果您希望直接访问api，你可以通过Plyr播放器对象的`embed`属性执行此操作，例如`player.embed`，然后可以使用第三方API了。有关各自API的更多信息，请参见：
 
 -   [YouTube iframe API指南](https://developers.google.com/youtube/iframe_api_reference)
 -   [Vimeo player.js指南](https://github.com/vimeo/player.js)
 
-_Note_: 并非所有的API方法都能100%正常工作。因为你的环境可能不同，最好尽可能使用Plyr API。
+_Note_: 并非所有的API方法都能100%正常工作，因为你的环境可能不同，最好尽可能使用Plyr API。
 # 键盘快捷键
 
-By default, a player will bind the following keyboard shortcuts when it has focus. If you have the `global` option to `true` and there's only one player in the
-document then the shortcuts will work when any element has focus, apart from an element that requires input.
+默认情况下，当播放器被聚焦（foucs）的时候，它将绑定以下键盘快捷键。如果你的`global`配置设置为`true` 并且只有一个播放器时，那么除需要输入的元素外，任何元素都被聚焦（foucs）时，快捷键都将起作用。
+
 
 | 键位        | 操作                                 |
 | ---------- | -------------------------------------- |
-| `0` to `9` | Seek from 0 to 90% respectively        |
+| `0` to `9` | 分别从从0到90%的进度跳转视频      |
 | `space`    | 切换播放暂停状态                       |
 | `K`        | 切换播放暂停状态                         |
 | &larr;     | 后退视频 （受`seekTime` 选项影响）               |
@@ -619,15 +615,13 @@ document then the shortcuts will work when any element has focus, apart from an 
 
 # 预览缩略图
 
-当您将鼠标悬停在清理器上或在主视频区域清理时，可以根据演示显示预览缩略图。这可以用于所有视频类型，但当然对于HTML5来说是最简单的。你需要自己生成雪碧图或图像。可以使用aws转码器来生成帧，然后将它们组合成雪碧图。出于性能方面的原因，建议使用雪碧图，因为它们下载速度更快，压缩成小文件大小也更容易，因此加载速度更快。
+当您将鼠标悬停在进度条上或在视频区域时，可以根据演示显示预览缩略图，可以用于所有视频种类（HTML、Youtube、Vimeo等）。而HTML5来说是最简单的，你需要自己生成雪碧图或图像，使用aws转码器来生成帧，然后将它们组合成雪碧图。出于性能方面的考虑，建议使用雪碧图，因为它们下载速度更快，压缩成小文件大小也更容易，因此加载速度更快。
 
-It's possible to display preview thumbnails as per the demo when you hover over the scrubber or while you are scrubbing in the main video area. This can be used for all video types but is easiest with HTML5 of course. You will need to generate the sprite or images yourself. This is possible using something like AWS transcoder to generate the frames and then combine them into a sprite image. Sprites are recommended for performance reasons - they will be much faster to download and easier to compress into a small file size making them load faster.
-
-You can see the example VTT files [here](https://cdn.plyr.io/static/demo/thumbs/100p.vtt) and [here](https://cdn.plyr.io/static/demo/thumbs/240p.vtt) for how the sprites are done. The coordinates are set as the `xywh` hash on the URL in the order X Offset, Y Offset, Width, Height (e.g. `240p-00001.jpg#xywh=1708,480,427,240` is offset `1708px` from the left, `480px` from the top and is `427x240px`. If you want to include images per frame, this is also possible but will be slower, resulting in a degraded experience.
+您可以在[这里](https://cdn.plyr.io/static/demo/thumbs/100p.vtt)和[这里](https://cdn.plyr.io/static/demo/thumbs/240p.vtt)看到示例vtt文件，了解雪碧图是如何完成的。坐标按x偏移量（X Offset）、y偏移量（Offset）、宽度（Width）、高度（Height）的顺序设置为url上的`xywh` Hash(例如，`240p-00001.jpg#xywh=1708,480,427,240`代表左偏移量为`1708px`，上偏移量为 `480px`，宽高为`427x240px`）。如果你想把每帧图像都包含进去，这是也是可以的，但会比较慢，带来不好的体验。
 
 # 全屏
 
-Plyr的全屏功能支持大多数现代浏览器，你可以从[这里](http://caniuse.com/#feat=fullscreen)查看全屏功能的浏览器适配程度 .
+Plyr的全屏功能支持大多数现代浏览器，你可以从[这里](http://caniuse.com/#feat=fullscreen)查看全屏功能的浏览器适配程度。
 
 # 浏览器兼容性
 
@@ -683,8 +677,7 @@ const supported = Plyr.supported('video', 'html5', true);
 
 # 插件 & 组件
 
-有一群给力的老哥为Plyr开发了CMS插件，或者JavaScript框架组件：
-
+有一群给力的老哥为Plyr开发了CMS插件和一些JavaScript框架的组件：
 
 | Type      | 维护者                                                     | 链接                                                                                         |
 | --------- | -------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
